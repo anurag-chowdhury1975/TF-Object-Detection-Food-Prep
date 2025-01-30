@@ -1,0 +1,9 @@
+bun
+mayonaise
+ketchup
+tomatoes
+beef_patty
+lettuce
+cheese
+mustard
+bun_top
