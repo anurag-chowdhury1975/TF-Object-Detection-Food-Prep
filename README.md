@@ -9,6 +9,7 @@ I learnt from following repos [BenGreenfield825](https://github.com/BenGreenfiel
 This project leverages the pretrained EfficientDet (512X512) Tensorflow Object Detection model that was fine tuned on the Burger preperation use case. 
 
 Here is a demo of the ingredient detection using the fine tuned object detection model:
+
 https://github.com/user-attachments/assets/85e2e56c-840c-4f36-a1ee-461c86418e92
 
 ## Authors
