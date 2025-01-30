@@ -2,16 +2,14 @@
 
 This project is a proof of concept demo of how CV Object Detection models can be used to detect the ingredients in food preperation. A solution like this can be adopted by restaurants and cloud kitchens to monitor food preperation and flag orders that may have been prepared incorrectly (i.e. if a required ingredient was missed or an ingredient not part of the recipe was used).
 
+**NOTE:**
+
+I learnt from following repos [BenGreenfield825](https://github.com/BenGreenfield825/Tensorflow-Object-Detection-with-Tensorflow-2.0), [Gilbert Tanner](https://github.com/TannerGilbert/Tensorflow-Object-Detection-with-Tensorflow-2.0) and reused much of their code to the ingredient detection specific problem I was trying to solve.
+
 This project leverages the pretrained EfficientDet (512X512) Tensorflow Object Detection model that was fine tuned on the Burger preperation use case. 
 
-Here is a demo of the ingredient detection using the fine tuned object detection mdeol:
-
+Here is a demo of the ingredient detection using the fine tuned object detection model:
 https://github.com/user-attachments/assets/85e2e56c-840c-4f36-a1ee-461c86418e92
-
-
-
-**NOTE:**
-I learnt from following repos [BenGreenfield825](https://github.com/BenGreenfield825/Tensorflow-Object-Detection-with-Tensorflow-2.0), [Gilbert Tanner](https://github.com/TannerGilbert/Tensorflow-Object-Detection-with-Tensorflow-2.0) and reused much of their code to the ingredient detection specific problem I was trying to solve.
 
 ## Authors
 
