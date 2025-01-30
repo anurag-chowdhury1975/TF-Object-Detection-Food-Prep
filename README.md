@@ -5,7 +5,10 @@ This project is a proof of concept demo of how CV Object Detection models can be
 This project leverages the pretrained EfficientDet (512X512) Tensorflow Object Detection model that was fine tuned on the Burger preperation use case. 
 
 Here is a demo of the ingredient detection using the fine tuned object detection mdeol:
-<img src="Videos/burger_prep_demo_bbs_3.mp4" title="Burger Prep" width="100%">
+
+https://github.com/user-attachments/assets/85e2e56c-840c-4f36-a1ee-461c86418e92
+
+
 
 **NOTE:**
 I learnt from following repos [BenGreenfield825](https://github.com/BenGreenfield825/Tensorflow-Object-Detection-with-Tensorflow-2.0), [Gilbert Tanner](https://github.com/TannerGilbert/Tensorflow-Object-Detection-with-Tensorflow-2.0) and reused much of their code to the ingredient detection specific problem I was trying to solve.
