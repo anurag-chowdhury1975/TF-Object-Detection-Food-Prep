@@ -1,3 +1,4 @@
+import os
 import cv2
 import sys
 import mediapipe as mp
@@ -7,6 +8,10 @@ from subprocess import PIPE, run
 from matplotlib import pyplot as plt
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+
+BURGER_PREP_SERIES = "1"
+if len(sys.argv) > 1:
+    BURGER_PREP_SERIES = sys.argv[1]
 
 # Uncomment this block of code if you want to create the image frames from a live video camera
 # and comment out the section below that creates the images from a prerecorded video
@@ -27,9 +32,6 @@ print(device_id)
 
 cap = cv2.VideoCapture(device_id)
 """
-BURGER_PREP_SERIES = 1
-if len(sys.argv) > 1:
-    BURGER_PREP_SERIES = sys.argv[1]
 
 # Uncomment the line of code below if you want to create the image frames from prerecorded video.
 # Comment out the section above that creates the images from a live video camera
@@ -44,7 +46,8 @@ img_width = int(cap.get(3))
 img_height = int(cap.get(4))
 # print("FPS = {}, Width = {}, Height = {}".format(fps, width, height))
 
-# Uncomment this block below if you are creating the image frames from a live video stream and want to save the video
+# Uncomment this block below if you are creating the image frames from a live video stream 
+# and want to save the video
 """
 video_rec = cv2.VideoWriter("Videos/burger_prep_"+BURGER_PREP_SERIES+".avi",
                     cv2.VideoWriter_fourcc('X','V','I','D'),
@@ -53,11 +56,10 @@ video_rec = cv2.VideoWriter("Videos/burger_prep_"+BURGER_PREP_SERIES+".avi",
 
 FRAME_COUNT = 0
 SAMPLE_RATE = 10
-
-base_options = python.BaseOptions(model_asset_path='Models/efficientdet_custom_with_metadata.tflite')
-options = vision.ObjectDetectorOptions(base_options=base_options,
-                                    score_threshold=0.5)
-detector = vision.ObjectDetector.create_from_options(options)
+img_folder = 'Images'
+output_folder = os.path.join('.', img_folder)
+if not os.path.isdir(output_folder):
+    os.makedirs(output_folder)
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -66,19 +68,10 @@ while cap.isOpened():
 
     # This piece of code saves the frame from the video as an image when the 'p' button is pressed
     if (FRAME_COUNT % SAMPLE_RATE == 0) or (key_pressed == ord('p')):
-        img_folder = 'Sample_Images'
         img_file_name = 'burger_'+BURGER_PREP_SERIES+'_img_'+str(FRAME_COUNT)+'.jpg'
         cv2.imwrite('./'+img_folder+'/'+img_file_name, frame)
-        
-        img = mp.Image(image_format=mp.ImageFormat.SRGB, data=frame)
-        detection_result = detector.detect(img)
-        annotated_img, bbox_coords = vo.visualize(frame, detection_result)
-        cv2.imshow('Video', annotated_img)
-        
-        uf.write_xml(img_folder, img_file_name, bbox_coords, img_width, img_height)
-        print(bbox_coords)
-    else:
-        cv2.imshow('Video', frame)
+
+    cv2.imshow('Video', frame)
 
     FRAME_COUNT += 1
     
